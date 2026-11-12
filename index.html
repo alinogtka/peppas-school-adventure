@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#8dd8f5">
+<title>Peppa's School Adventure</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=jyNv0HdvxYO08iN1LGnzrKXE1jsnl9TsLM9kirRm9hkRWysWhwyLQjI5ozZ8zv0BUhxdcSGpnv_cSXMySKnYabdk4YiAr5qJggC2anVYEXM5bUqRMkG60UXLU1AaNuUF1WJazHfcRltnoX3jskdBGX3f0uwdWHL9dXCFrp0WkcTJcaK6KTtWpS00MhQmvCZKTEYqTPbX533jRMHyVY1c9IdRSbyfPwvNUu3-3Q23tsU06057Ev0cIwJqZgtdFr49j18GHufpQCInneRbjPyD0L8c9Lfjm0IkJJQZreie1K3RT9O1UV6mUwy2R-PJlChy" charset="UTF-8"></script><style>
+:root{--pink:#f5a6b8;--blue:#8dd8f5;--yellow:#ffe58a;--green:#a9db9c;--purple:#cbb5f5;--ink:#4b5263;--white:#fff;--shadow:0 8px 0 rgba(73,91,115,.12);--round:26px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink)}
+body{background:linear-gradient(#bdeaff 0 47%,#c8edb7 47% 100%);overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;touch-action:manipulation}
+button:focus-visible{outline:4px solid #6b62b5;outline-offset:3px}
+#app{min-height:100vh;padding:clamp(12px,3vw,30px);position:relative;overflow:hidden}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.cloud{position:absolute;width:130px;height:48px;background:#fff;border-radius:50px;opacity:.8;animation:drift 38s linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%}.cloud:before{width:58px;height:58px;left:20px;top:-25px}.cloud:after{width:72px;height:72px;right:18px;top:-34px}
+.cloud.c1{top:10%;left:-150px}.cloud.c2{top:26%;left:55%;transform:scale(.7);animation-duration:52s}
+@keyframes drift{to{translate:calc(100vw + 300px) 0}}
+#app>*:not(.sky){position:relative;z-index:1}
+.screen{display:none;max-width:1050px;margin:0 auto;min-height:calc(100vh - 50px);align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center}
+.screen.active{display:flex}
+.panel{width:min(100%,900px);background:rgba(255,255,255,.94);border:5px solid white;border-radius:var(--round);padding:clamp(18px,4vw,38px);box-shadow:var(--shadow)}
+h1{font-size:clamp(2.1rem,7vw,4.6rem);line-height:1.02;color:#ef7898;text-shadow:3px 4px 0 #fff;margin:5px 0}
+h2{font-size:clamp(1.6rem,4vw,2.6rem);margin:0 0 10px;color:#6872b7}
+p{font-size:clamp(1.05rem,2.5vw,1.35rem);line-height:1.45;margin:8px 0}
+.subtitle{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:bold}
+.hero-art{display:flex;align-items:end;justify-content:center;gap:clamp(8px,5vw,45px);margin:4px auto}
+.pig{width:clamp(105px,22vw,190px);height:auto;filter:drop-shadow(0 7px 0 rgba(0,0,0,.08));animation:bob 2.5s ease-in-out infinite}
+.pig:nth-child(2){animation-delay:.4s}
+@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+.btn{background:var(--pink);color:#713e59;font-weight:900;font-size:clamp(1.05rem,2.8vw,1.35rem);padding:15px 25px;border-radius:19px;box-shadow:0 6px 0 #d77e9a;min-height:56px;transition:transform .12s,box-shadow .12s}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #d77e9a}
+.btn.blue{background:var(--blue);box-shadow:0 6px 0 #65b8d8;color:#28566c}
+.btn.yellow{background:var(--yellow);box-shadow:0 6px 0 #e2c75e;color:#725b22}
+.btn.green{background:var(--green);box-shadow:0 6px 0 #79b96f;color:#355f37}
+.btn.purple{background:var(--purple);box-shadow:0 6px 0 #a28bd9;color:#51417c}
+.btn.small{font-size:1rem;padding:10px 17px;min-height:44px}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.3)}
+.speech{background:#fff;border:4px solid #f5c6d3;border-radius:24px;padding:16px 22px;max-width:650px;margin:0 auto 10px;font-size:clamp(1.1rem,3vw,1.45rem);font-weight:bold}
+.topbar{width:min(100%,900px);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pill{background:#fff;border:3px solid white;border-radius:30px;padding:9px 15px;font-weight:bold;box-shadow:var(--shadow)}
+.map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.level-card{background:#fff;border:4px solid #f6dce5;border-radius:22px;padding:15px 8px;min-height:145px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;box-shadow:0 5px 0 #e6d5dc;color:var(--ink);font-weight:bold}
+.level-card .emoji{font-size:2.4rem}.level-card strong{font-size:1.05rem}.level-card.done{border-color:#f1ce54;background:#fffbea}.level-card.locked{opacity:.55;filter:grayscale(.5)}
+.level-card:not(.locked):active{transform:translateY(3px)}
+.progress{height:14px;background:#e9edf5;border-radius:20px;overflow:hidden;width:min(100%,600px);margin:8px auto}
+.progress>div{height:100%;background:linear-gradient(90deg,#a8d995,#ffe58a);width:0;transition:width .3s}
+.question{font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#5965a6;margin:10px 0 18px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;max-width:700px;margin:15px auto}
+.option{background:#f1f8ff;border:4px solid #c9eaf8;border-radius:20px;padding:18px 12px;min-height:88px;font-size:clamp(1.15rem,3vw,1.55rem);font-weight:900;color:#46566a;box-shadow:0 5px 0 #c5dce7}
+.option:active{transform:translateY(3px);box-shadow:0 2px 0 #c5dce7}
+.option.correct{background:#e4f8dc;border-color:#94cf82}.option.wrong{background:#ffe7eb;border-color:#ef9cad}
+.feedback{min-height:38px;font-size:1.2rem;font-weight:bold;margin:12px 0;color:#609d59}
+.task-emoji{font-size:clamp(3.5rem,12vw,6rem);margin:4px}
+.footer-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:15px}
+.starline{font-size:1.3rem;color:#d9a900;font-weight:bold}
+.hidden{display:none!important}
+.confetti{font-size:2rem;animation:pop .65s ease-in-out infinite alternate}
+@keyframes pop{to{transform:translateY(-8px) rotate(10deg)}}
+.final-stars{font-size:clamp(2.4rem,8vw,4rem);letter-spacing:8px}
+.sound-btn{background:#fff;border:3px solid #cfeefa;border-radius:50%;width:55px;height:55px;font-size:1.5rem}
+.note{font-size:.95rem;opacity:.75}
+@media(max-width:600px){#app{padding:10px}.screen{min-height:calc(100vh - 20px)}.panel{padding:17px 13px}.map{gap:9px}.level-card{min-height:125px;padding:10px 4px}.level-card .emoji{font-size:2rem}.level-card strong{font-size:.88rem}.options{gap:9px}.option{min-height:76px;padding:12px 7px}}
+@media(orientation:landscape) and (max-height:560px){.screen{min-height:auto;padding:8px 0}.hero-art{margin:0}.pig{width:95px}.panel{padding:14px}.map{gap:8px}.level-card{min-height:95px}}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="sky"><div class="cloud c1"></div><div class="cloud c2"></div></div>
+
+<section id="home" class="screen active">
+ <div class="panel">
+  <div class="hero-art">
+   <svg class="pig" viewBox="0 0 180 190" role="img" aria-label="A happy pink cartoon pig"><ellipse cx="91" cy="105" rx="58" ry="67" fill="#f5a6b8" stroke="#d87991" stroke-width="4"/><ellipse cx="45" cy="102" rx="22" ry="15" fill="#f5a6b8" stroke="#d87991" stroke-width="4"/><ellipse cx="137" cy="102" rx="22" ry="15" fill="#f5a6b8" stroke="#d87991" stroke-width="4"/><path d="M55 48 L53 14 Q75 20 77 49 M104 48 L126 18 Q139 40 123 59" fill="#f5a6b8" stroke="#d87991" stroke-width="4"/><ellipse cx="91" cy="120" rx="38" ry="25" fill="#f8bfd0"/><circle cx="75" cy="86" r="6" fill="#433c4b"/><circle cx="108" cy="86" r="6" fill="#433c4b"/><ellipse cx="79" cy="119" rx="5" ry="7" fill="#d87991"/><ellipse cx="103" cy="119" rx="5" ry="7" fill="#d87991"/><path d="M82 139 Q91 147 101 139" fill="none" stroke="#9c5269" stroke-width="3" stroke-linecap="round"/><path d="M65 166 L61 184 M113 166 L118 184" stroke="#51475a" stroke-width="7" stroke-linecap="round"/></svg>
+   <svg class="pig" viewBox="0 0 180 190" role="img" aria-label="A little pink cartoon pig"><ellipse cx="91" cy="105" rx="52" ry="61" fill="#f7b5c4" stroke="#d87991" stroke-width="4"/><ellipse cx="91" cy="120" rx="34" ry="23" fill="#fbd0da"/><path d="M59 54 L65 20 Q83 28 81 58 M105 57 L128 27 Q140 48 119 68" fill="#f7b5c4" stroke="#d87991" stroke-width="4"/><circle cx="76" cy="88" r="5" fill="#433c4b"/><circle cx="106" cy="88" r="5" fill="#433c4b"/><ellipse cx="80" cy="120" rx="4" ry="6" fill="#d87991"/><ellipse cx="102" cy="120" rx="4" ry="6" fill="#d87991"/><path d="M83 137 Q91 144 99 137" fill="none" stroke="#9c5269" stroke-width="3" stroke-linecap="round"/><path d="M67 158 L64 181 M111 158 L114 181" stroke="#51475a" stroke-width="7" stroke-linecap="round"/></svg>
+  </div>
+  <h1>PEPPA'S SCHOOL<br>ADVENTURE!</h1>
+  <p class="subtitle">Let's help our friends get ready for the school party!</p>
+  <div class="speech">🐷 Hello, friend! Welcome to our school!<br>Can you complete six fun missions?</div>
+  <button class="btn" onclick="showMap()">START ADVENTURE! ⭐</button>
+  <p class="note">A little English adventure for little learners</p>
+ </div>
+</section>
+
+<section id="map" class="screen">
+ <div class="topbar"><button class="btn small" onclick="goHome()">🏠 Home</button><span class="pill">⭐ Stars: <b id="starCount">0</b>/6</span><button class="btn small yellow" onclick="resetGame()">↻ Reset</button></div>
+ <div class="panel">
+  <h2>Your Adventure Map!</h2>
+  <p>Complete every mission and get ready for the party!</p>
+  <div class="progress"><div id="mapProgress"></div></div>
+  <div class="map" id="mapCards"></div>
+ </div>
+</section>
+
+<section id="game" class="screen">
+ <div class="topbar"><button class="btn small" onclick="showMap()">← Map</button><span class="pill" id="levelLabel">Level 1</span><span class="pill" id="taskCounter">1 / 3</span></div>
+ <div class="panel">
+  <div class="starline" id="miniStars">⭐ ⭐ ⭐</div>
+  <h2 id="gameTitle">Hello, Peppa!</h2>
+  <p id="gameIntro">Let's say hello!</p>
+  <div class="progress"><div id="taskProgress"></div></div>
+  <div id="questionArea"></div>
+  <div id="feedback" class="feedback" aria-live="polite"></div>
+  <div class="footer-actions"><button class="btn small blue" onclick="speakCurrent()">🔊 Listen</button><button id="nextBtn" class="btn small green hidden" onclick="nextTask()">Next ➜</button></div>
+ </div>
+</section>
+
+<section id="reward" class="screen">
+ <div class="panel">
+  <div class="confetti">🎉 ✨ 🎈 ✨ 🎉</div>
+  <h1>Wonderful!</h1>
+  <div class="final-stars">⭐</div>
+  <h2>You got a star!</h2>
+  <p id="rewardText">Mission complete!</p>
+  <div class="footer-actions"><button class="btn green" onclick="showMap()">Back to the map</button><button id="nextLevelBtn" class="btn" onclick="startNextLevel()">Next mission ➜</button></div>
+ </div>
+</section>
+
+<section id="final" class="screen">
+ <div class="panel">
+  <div class="hero-art"><div class="task-emoji">🎈🐷🎂🐷🎈</div></div>
+  <h1>THE BIG SCHOOL PARTY!</h1>
+  <div class="final-stars">⭐⭐⭐⭐⭐⭐</div>
+  <h2>You did it, superstar!</h2>
+  <p>You helped your friends and collected all six stars!</p>
+  <div class="speech">"Thank you, friend! Let's have a party!"</div>
+  <p class="task-emoji">🎉 🎁 🧁 🎊</p>
+  <button class="btn" onclick="showMap()">See your stars</button>
+  <button class="btn small yellow" onclick="resetGame()">Play again</button>
+ </div>
+</section>
+</div>
+<script>
+const levels=[
+ {title:"Hello, Peppa!",intro:"Let's meet our new friends!",emoji:"👋",tasks:[
+  {q:"Peppa asks: “What's your name?”",opts:["My name is…","It's a pencil.","Goodbye!"],a:0,say:"What's your name? My name is."},
+  {q:"Peppa says: “Hello!”",opts:["Good night!","Hello!","It's a desk."],a:1,say:"Hello!"},
+  {q:"Choose the best answer: “What's your name?”",opts:["Blue!","It's a chair.","My name is…"],a:2,say:"What's your name? My name is."}
+ ]},
+ {title:"Number Adventure",intro:"Count the balloons!",emoji:"🎈",tasks:[
+  {q:"How many apples? 🍎 🍎 🍎",opts:["Two","Three","Five"],a:1,say:"Three apples."},
+  {q:"Choose number FIVE.",opts:["3","5","8"],a:1,say:"Five."},
+  {q:"Count the stars: ⭐ ⭐ ⭐ ⭐",opts:["Four","Six","Two"],a:0,say:"Four stars."}
+ ]},
+ {title:"Alphabet Forest",intro:"Let's find the letters!",emoji:"🌳",tasks:[
+  {q:"Which letter says /b/?",opts:["A","B","D"],a:1,say:"B. B is for ball."},
+  {q:"Find the first letter of APPLE.",opts:["A","E","P"],a:0,say:"A. Apple."},
+  {q:"Which word starts with C?",opts:["Dog","Cat","Fish"],a:1,say:"Cat starts with C."}
+ ]},
+ {title:"Colorful Party",intro:"Let's decorate the party!",emoji:"🎨",tasks:[
+  {q:"Tap the RED colour.",opts:["🔵 Blue","🔴 Red","🟢 Green"],a:1,say:"Red."},
+  {q:"What colour is the sun? ☀️",opts:["Yellow","Pink","Black"],a:0,say:"Yellow."},
+  {q:"Choose GREEN.",opts:["🟣 Purple","🟡 Yellow","🟢 Green"],a:2,say:"Green."}
+ ]},
+ {title:"Find School Things!",intro:"Can you find things in the classroom?",emoji:"🎒",tasks:[
+  {q:"Find a PENCIL.",opts:["✏️ Pencil","🪑 Chair","📚 Book"],a:0,say:"Pencil."},
+  {q:"What do you read? 📖",opts:["A bag","A book","A ruler"],a:1,say:"A book."},
+  {q:"Find the SCHOOL BAG.",opts:["📏 Ruler","🎒 School bag","🖍️ Crayon"],a:1,say:"School bag."}
+ ]},
+ {title:"What's This?",intro:"Look carefully and choose!",emoji:"🔎",tasks:[
+  {q:"What's this? 🐱",opts:["It's a dog.","It's a cat.","It's a fish."],a:1,say:"It's a cat."},
+  {q:"What's this? ⚽",opts:["It's a ball.","It's a book.","It's a car."],a:0,say:"It's a ball."},
+  {q:"What's this? 🐶",opts:["It's a bird.","It's a duck.","It's a dog."],a:2,say:"It's a dog."}
+ ]}
+];
+const icons=["👋","🔢","🔤","🎨","🎒","🔎"];
+const STORE="peppasSchoolAdventure_v1";
+let state=loadState(),levelIndex=0,taskIndex=0,currentSpeech="";
+function loadState(){try{const s=JSON.parse(localStorage.getItem(STORE));if(s&&Array.isArray(s.done))return s}catch(e){}return{done:[]}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state))}catch(e){}}
+function screen(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo(0,0)}
+function goHome(){screen("home")}
+function showMap(){renderMap();screen("map")}
+function renderMap(){
+ const count=state.done.length;document.getElementById("starCount").textContent=count;document.getElementById("mapProgress").style.width=(count/6*100)+"%";
+ document.getElementById("mapCards").innerHTML=levels.map((l,i)=>{const done=state.done.includes(i),locked=i>0&&!state.done.includes(i-1);return `<button class="level-card ${done?"done":""} ${locked?"locked":""}" ${locked?"disabled":`onclick="startLevel(${i})"`}><span class="emoji">${done?"⭐":locked?"🔒":icons[i]}</span><strong>${i+1}. ${l.title}</strong><span>${done?"Mission complete!":locked?"Complete the previous mission":"Let's play!"}</span></button>`}).join("");
+ if(count===6)setTimeout(()=>screen("final"),350);
+}
+function startLevel(i){if(i>0&&!state.done.includes(i-1))return;levelIndex=i;taskIndex=0;renderTask();screen("game")}
+function renderTask(){
+ const l=levels[levelIndex],t=l.tasks[taskIndex];currentSpeech=t.say||t.q;
+ document.getElementById("levelLabel").textContent="Level "+(levelIndex+1);
+ document.getElementById("taskCounter").textContent=(taskIndex+1)+" / "+l.tasks.length;
+ document.getElementById("gameTitle").textContent=l.title;document.getElementById("gameIntro").textContent=l.intro;
+ document.getElementById("taskProgress").style.width=(taskIndex/l.tasks.length*100)+"%";
+ document.getElementById("feedback").textContent="";document.getElementById("nextBtn").classList.add("hidden");
+ document.getElementById("questionArea").innerHTML=`<div class="task-emoji">${l.emoji}</div><div class="question">${t.q}</div><div class="options">${t.opts.map((o,j)=>`<button class="option" onclick="answer(${j},this)">${o}</button>`).join("")}</div>`;
+}
+function answer(n,el){
+ const t=levels[levelIndex].tasks[taskIndex],buttons=[...document.querySelectorAll(".option")];buttons.forEach(b=>b.disabled=true);
+ if(n===t.a){el.classList.add("correct");document.getElementById("feedback").textContent="⭐ Great job! Well done!";document.getElementById("nextBtn").classList.remove("hidden");playTone(true)}
+ else{el.classList.add("wrong");buttons[t.a].classList.add("correct");document.getElementById("feedback").textContent="Good try! Let's try again.";playTone(false);setTimeout(()=>{buttons.forEach(b=>{b.disabled=false;b.classList.remove("wrong","correct")});document.getElementById("feedback").textContent=""},1050)}
+}
+function nextTask(){if(taskIndex<levels[levelIndex].tasks.length-1){taskIndex++;renderTask()}else{if(!state.done.includes(levelIndex))state.done.push(levelIndex);state.done.sort((a,b)=>a-b);save();document.getElementById("rewardText").textContent=levels[levelIndex].title+" is complete! You earned a shiny star.";document.getElementById("nextLevelBtn").classList.toggle("hidden",levelIndex===5);screen("reward")}}
+function startNextLevel(){startLevel(Math.min(levelIndex+1,5))}
+function speakCurrent(){if(!currentSpeech)return;if("speechSynthesis"in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(currentSpeech);u.lang="en-US";u.rate=.82;speechSynthesis.speak(u)}else{document.getElementById("feedback").textContent="Audio is not available in this browser."}}
+function playTone(ok){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=ok?660:220;g.gain.setValueAtTime(.08,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.22);o.start();o.stop(c.currentTime+.23);o.onended=()=>c.close()}catch(e){}}
+function resetGame(){if(confirm("Start the adventure again? All collected stars will be reset.")){state={done:[]};save();showMap()}}
+renderMap();
+</script>
+</body>
+</html>
